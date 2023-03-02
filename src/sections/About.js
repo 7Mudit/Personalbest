@@ -1,9 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import img1 from '../assets/Images/1.webp'
-import img2 from '../assets/Images/2.webp'
-import img3 from '../assets/Images/3.webp'
-
+import img1 from "../assets/Images/1.webp";
+import img2 from "../assets/Images/2.webp";
+import img3 from "../assets/Images/3.webp";
 
 const Section = styled.section`
   position: relative;
@@ -33,23 +32,21 @@ const Left = styled.div`
 const Right = styled.div`
   width: 50%;
   position: relative;
-  img{
+  img {
     width: 100%;
     height: auto;
   }
-  .small-img-1{
+  .small-img-1 {
     width: 40%;
     position: absolute;
     right: 95%;
     bottom: 10%;
-
   }
-  .small-img-2{
+  .small-img-2 {
     width: 40%;
     position: absolute;
     left: 80%;
     bottom: 30%;
-
   }
 `;
 
@@ -82,13 +79,21 @@ const About = () => {
         <br />
       </Left>
       <Right>
-        <img src={img1} alt="About Us"  />
-        <img 
-            data-scroll data-scroll-speed="5"
-        src={img2} className="small-img-1" alt="About Us"  />
-        <img src={img3} 
-                    data-scroll data-scroll-speed="-2"
-        className="small-img-2" alt="About Us"  />
+        <img src={img1} alt="About Us" />
+        <img
+          data-scroll
+          data-scroll-speed="5"
+          src={img2}
+          className="small-img-1"
+          alt="About Us"
+        />
+        <img
+          src={img3}
+          data-scroll
+          data-scroll-speed="-2"
+          className="small-img-2"
+          alt="About Us"
+        />
       </Right>
     </Section>
   );
