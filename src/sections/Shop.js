@@ -1,5 +1,22 @@
-import React from "react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import React, {  useLayoutEffect } from "react";
+import { useRef } from "react";
 import styled from "styled-components";
+import {motion} from 'framer-motion'
+
+import img1 from '../assets/Images/1.webp';
+import img2 from '../assets/Images/2.webp';
+import img3 from '../assets/Images/3.webp';
+import img4 from '../assets/Images/4.webp';
+import img5 from '../assets/Images/5.webp';
+import img6 from '../assets/Images/6.webp';
+import img7 from '../assets/Images/7.webp';
+import img8 from '../assets/Images/8.webp';
+import img9 from '../assets/Images/9.webp';
+import img10 from '../assets/Images/10.webp';
+
+
 
 const Section = styled.section`
   min-height: 100vh;
@@ -47,7 +64,7 @@ const Right = styled.div`
     left: 35%;
     min-height: 100vh;
     background-color: ${props => props.theme.grey};
-    width: 65%;
+    /* width: 65%; */
     padding-left: 30%;
     display: flex;
     justify-content: flex-start;
@@ -58,9 +75,84 @@ const Right = styled.div`
     }
 `
 
+const Item = styled(motion.div)`
+  display: inline-block;
+  width: 20rem;
+  margin-right: 6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  img{
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+  }
+  h1{
+    display: inline-block;
+    width: fit-content;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+  }
+`
+const Product = ({img,title=''}) => {
+  return(
+    <Item
+      initial={{filter:'grayscale(100%'}}
+      whileInView={{filter:'grayscale(0%)'}}
+      transition={{duration:1.5}}
+      viewport={{once:false,amount:"all"}}
+    >
+      <img src={img} alt={title} />
+      <h1>{title}</h1>
+    </Item>
+  )
+} 
+
 const Shop = () => {
+  gsap.registerPlugin(ScrollTrigger)
+  const ref = useRef(null);
+  const horizontalRef = useRef(null);
+  useLayoutEffect(()=>{
+    let element = ref.current;
+    let scrollingElement=horizontalRef.current;
+    let pinWrapWidth = scrollingElement.offsetWidth;
+    let t1 = gsap.timeline();
+    setTimeout(()=>{
+      t1.to(element,{
+        scrollTrigger:{
+          trigger:element,
+          start:'top top',
+          end:pinWrapWidth,
+          scrub:true,
+          scroller:'.App',//locomotive element
+          pin:true,
+          markers:true,
+        },
+        // increased scrolling height of the element same as the scrolling element width
+        height:`${scrollingElement.scrollWidth}px`,
+        ease:'none'
+      })
+      // horizontal scrolling
+      t1.to(scrollingElement,{
+        scrollTrigger:{
+          trigger:scrollingElement,
+          start:'top top',
+          end:pinWrapWidth,
+          scrub:true,
+          scroller:'.App',//locomotive element
+          markers:true,
+        },
+        // increased scrolling height of the element same as the scrolling element width
+        x:-pinWrapWidth,
+        ease:'none'
+      })
+      ScrollTrigger.refresh();
+    },1000)
+  },[])
   return (
-    <Section>
+    <Section ref={ref}>
       <Title data-scroll data-scroll-speed="-1">
         New Collection
       </Title>
@@ -79,11 +171,17 @@ const Shop = () => {
           country and look different.
         </p>
       </Left>
-      <Right>
-        <h1>img</h1>
-        <h1>img</h1>
-        <h1>img</h1>
-        <h1>img</h1>
+      <Right ref ={horizontalRef}>
+          <Product img={img1} title="Java"/>
+          <Product img={img2} title="C++"/>
+          <Product img={img3} title="Python"/>
+          <Product img={img4} title="DSA"/>
+          <Product img={img5} title="Flutter"/>
+          <Product img={img6} title="Web Development"/>
+          <Product img={img7} title="Android Development"/>
+          <Product img={img8} title="Mardo"/>
+          <Product img={img9} title="Jan"/>
+          <Product img={img10} title="Se"/>
       </Right>
     </Section>
   );
