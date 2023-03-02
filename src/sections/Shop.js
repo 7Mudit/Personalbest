@@ -101,7 +101,7 @@ const Product = ({img,title=''}) => {
     <Item
       initial={{filter:'grayscale(100%'}}
       whileInView={{filter:'grayscale(0%)'}}
-      transition={{duration:1.5}}
+      transition={{duration:0.5}}
       viewport={{once:false,amount:"all"}}
     >
       <img src={img} alt={title} />
