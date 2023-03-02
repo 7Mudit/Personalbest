@@ -128,7 +128,6 @@ const Shop = () => {
           scrub:true,
           scroller:'.App',//locomotive element
           pin:true,
-          markers:true,
         },
         // increased scrolling height of the element same as the scrolling element width
         height:`${scrollingElement.scrollWidth}px`,
@@ -142,7 +141,7 @@ const Shop = () => {
           end:pinWrapWidth,
           scrub:true,
           scroller:'.App',//locomotive element
-          markers:true,
+
         },
         // increased scrolling height of the element same as the scrolling element width
         x:-pinWrapWidth,
@@ -150,10 +149,15 @@ const Shop = () => {
       })
       ScrollTrigger.refresh();
     },1000)
+    return ()=>{
+      // clearing instances
+      t1.kill();
+      ScrollTrigger.kill();
+  }
   },[])
   return (
     <Section ref={ref}>
-      <Title data-scroll data-scroll-speed="-1">
+      <Title data-scroll data-scroll-speed="-2">
         New Collection
       </Title>
       <Left>
