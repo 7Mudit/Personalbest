@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import MainVideo from "../assets/Walking Girl.mp4";
+// import MainVideo from "../assets/Walking Girl.mp4";
+import MainVideo from "../assets/introVideo.mp4";
 import {motion} from 'framer-motion'
 
 const VideoContainer = styled.section`
@@ -76,20 +77,44 @@ const item = {
 };
 
 const CoverVideo = () => {
+  const startVideo = async () => {
+    const video = document.querySelector('video');
+  
+    try {
+        await video.play();
+  
+        video.setAttribute('autoplay', true);
+  
+        console.log('video started playing successfully');
+    } catch (err) {
+      console.log(err, 'video play error');
+      // do stuff in case your video is unavailable to play/autoplay
+    }
+  }
+  
+  setTimeout(startVideo, 4000)
   return (
     <VideoContainer>
       <DarkOverlay />
       <Title variants={container} initial="hidden" animate="show">
         <div>
+
+          <motion.h1 variants={item} data-scroll data-scroll-delay='0.13' data-scroll-speed="4">L</motion.h1>
+          <motion.h1 variants={item}  data-scroll data-scroll-delay='0.09' data-scroll-speed="4">e</motion.h1>
+          <motion.h1 variants={item}  data-scroll data-scroll-delay='0.06' data-scroll-speed="4">a</motion.h1>
+          <motion.h1 variants={item}  data-scroll data-scroll-delay='0.04' data-scroll-speed="4">r</motion.h1>
+          <motion.h1 variants={item} data-scroll data-scroll-delay='0.13' data-scroll-speed="4">n &nbsp;</motion.h1>
+          <motion.h1 variants={item}  data-scroll data-scroll-delay='0.09' data-scroll-speed="4">T</motion.h1>
+          <motion.h1 variants={item}  data-scroll data-scroll-delay='0.06' data-scroll-speed="4">o &nbsp;</motion.h1>
           <motion.h1 variants={item} data-scroll data-scroll-delay='0.13' data-scroll-speed="4">C</motion.h1>
           <motion.h1 variants={item}  data-scroll data-scroll-delay='0.09' data-scroll-speed="4">o</motion.h1>
           <motion.h1 variants={item}  data-scroll data-scroll-delay='0.06' data-scroll-speed="4">d</motion.h1>
           <motion.h1 variants={item}  data-scroll data-scroll-delay='0.04' data-scroll-speed="4">e</motion.h1>
         </div>
-        <motion.h2 variants={item} data-scroll data-scroll-delay='0.04' data-scroll-speed="2">code with ease</motion.h2>
+        <motion.h2 variants={item} data-scroll data-scroll-delay='0.04' data-scroll-speed="2">The home of coding excellence.</motion.h2>
       </Title>
 
-      <video src={MainVideo} type="video/mp4" autoPlay muted loop></video>
+      <video src={MainVideo} type="video/mp4"  muted loop></video>
     </VideoContainer>
   );
 };
