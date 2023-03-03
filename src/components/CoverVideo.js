@@ -21,7 +21,7 @@ const DarkOverlay = styled.div`
   left: 0;
   right: 0;
   z-index: 5;
-  background-color: ${(props) => `rgba(${props.theme.bodyRgba},0.9)`};
+  background-color: ${(props) => `rgba(${props.theme.bodyRgba},0.6)`};
 `;
 const Title = styled(motion.div)`
   position: absolute;
@@ -61,7 +61,7 @@ const container = {
   show: {
     opacity: 1,
     transition: {
-      delayChildren:2,
+      delayChildren:5,
       staggerChildren:0.3,
     },
   },
