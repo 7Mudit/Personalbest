@@ -65,7 +65,7 @@ const Title = styled(motion.div)`
     text-transform: capitalize;
     @media (max-width: 30em) {
       font-size: ${(props) => props.theme.fontmd};
-      margin-top: -1.5rem;
+      margin-top: -0.5rem;
     }
   }
 `;

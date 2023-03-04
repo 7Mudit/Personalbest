@@ -43,7 +43,7 @@ const Overlay = styled.div`
   }
   @media (max-width:30em){
     width: 80vw;
-    height: 60vh;
+    height: 80vh;
   }
 `;
 const Title = styled.h1`
@@ -149,7 +149,7 @@ const NewArrival = () => {
         },
 
         {
-          y: "-100%",
+          y: "-70%",
           scrollTrigger: {
             trigger: scrollingElement,
             start: "top top",
