@@ -38,7 +38,7 @@ const Title = styled.h1`
   text-shadow: 1px 1px 1px ${(props) => props.theme.body};
   top: 1rem;
   left: 5%;
-  z-index: 11;
+  z-index: 15;
   @media (max-width:64em){
     font-size: ${(props) => props.theme.fontxxl};
   }
@@ -91,6 +91,7 @@ const Right = styled.div`
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    z-index: 11;
     h1{
         width: 5rem;
         margin: 0 2rem;
