@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Logo from "../assets/Svgs/star_white_48dp.svg";
 import { motion } from "framer-motion";
-import {useLocomotiveScroll} from 'react-locomotive-scroll'
+import { useLocomotiveScroll } from "react-locomotive-scroll";
 
 const Section = styled.section`
   min-height: 100vh;
@@ -29,11 +29,17 @@ const LogoContainer = styled.div`
   }
   h3 {
     font-family: "Kaushan Script";
-    font-size: ${(props) => props.theme.fontxl};
+    font-size: ${(props) => props.theme.fontxxl};
+    @media (max-width: 48em) {
+      font-size: ${(props) => props.theme.fontxl};
+    }
   }
 `;
 const FooterComponent = styled(motion.footer)`
   width: 80vw;
+  @media (max-width: 48em) {
+      width: 90vw;
+    }
   ul {
     list-style: none;
     display: flex;
@@ -45,6 +51,9 @@ const FooterComponent = styled(motion.footer)`
     padding: 0 1rem;
     border-top: 1px solid ${(props) => props.theme.text};
     border-bottom: 1px solid ${(props) => props.theme.text};
+    @media (max-width: 48em) {
+      justify-content: center;
+    }
   }
   li {
     padding: 2rem;
@@ -54,6 +63,10 @@ const FooterComponent = styled(motion.footer)`
     transition: all 0.3s ease;
     &:hover {
       transform: scale(1.1);
+    }
+    @media (max-width: 48em) {
+      padding: 1rem;
+      font-size: ${(props) => props.theme.fontmd};
     }
   }
 `;
@@ -68,18 +81,31 @@ const Bottom = styled.div`
   a {
     text-decoration: underline;
   }
+  @media (max-width: 64em) {
+    flex-direction: column;
+    justify-content: center;
+    span {
+
+      transform: none !important;
+    }
+    margin: 0 2em;
+  }
+  @media (max-width: 48em) {
+    font-size: ${(props) => props.theme.fontmd};
+
+  }
 `;
 const Footer = () => {
-    const {scroll} = useLocomotiveScroll();
+  const { scroll } = useLocomotiveScroll();
 
-    const handleScroll = (id) =>{
-        let elem=document.querySelector(id);
-        scroll.scrollTo(elem,{
-            offset:'-100',
-            duration:'2000',
-            easing:[0.25,0.0,0.35,1.0]
-        })
-    }
+  const handleScroll = (id) => {
+    let elem = document.querySelector(id);
+    scroll.scrollTo(elem, {
+      offset: "-100",
+      duration: "2000",
+      easing: [0.25, 0.0, 0.35, 1.0],
+    });
+  };
 
   return (
     <Section>
@@ -99,10 +125,10 @@ const Footer = () => {
         }}
       >
         <ul>
-          <li onClick={()=>handleScroll('#home')}>Home</li>
-          <li onClick={()=>handleScroll('.about')}>About</li>
-          <li onClick={()=>handleScroll('#shop')}>Shop</li>
-          <li onClick={()=>handleScroll('#new-arrival')}>New Arrival</li>
+          <li onClick={() => handleScroll("#home")}>Home</li>
+          <li onClick={() => handleScroll(".about")}>About</li>
+          <li onClick={() => handleScroll("#shop")}>Shop</li>
+          <li onClick={() => handleScroll("#new-arrival")}>New Arrival</li>
           <li>
             <a href="htttp://google.com" target="_blank" rel="noreferrer">
               Look book
@@ -127,7 +153,7 @@ const Footer = () => {
             data-scroll-speed="-2"
             data-scroll-direction="horizontal"
           >
-            Made with &hearts; by &nbsp; Mudit
+          Made with &hearts; by &nbsp; Mudit
           </span>
         </Bottom>
       </FooterComponent>
